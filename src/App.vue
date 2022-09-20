@@ -1,11 +1,14 @@
 
 
 <template>
-   <div class="navbar d-flex text-white bg-dark ">
-      <h3 class="p-4 mx-3">Dashboard</h3>
-      <div class="d-flex ">
-         <i class="fa-solid fa-user-tie fs-1"></i>
-         <h3 class=" mx-2">Demo User</h3>
+   <div class="navbar d-flex  text-white bg-dark ">
+     <h1></h1>
+      <div class="d-flex mx-5 p-2 ">
+         <div class=" rounded-circle">
+          <i class="fa-regular fa-user fs-1 p-2 text-dark bg-danger rounded-circle"></i>
+         </div>
+         
+         <h3 class=" mx-2 p-1">Demo User</h3>
      
       </div>
     
@@ -30,6 +33,7 @@
             icon:true,
            active:false,
            toggle:true,
+           home:false,
          },
            {id:2,
            header:'View-Content',
@@ -38,6 +42,7 @@
            icon:false,
            active:true,
             toggle:true,
+            home:false,
          },]);
 
       return{

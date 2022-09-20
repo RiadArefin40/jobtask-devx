@@ -3,12 +3,17 @@
     <div class="collapse-wrapper ">
     
     <div  v-for="(item,index) in customItems" :key="item.header"  class="collapsible-item mx-5">
-        <Transition name="toggle">
-             <div v-if="!item.toggle"  @click="reverse(index)"    class="collapsible-header d-flex justify-content-between  ">
-               <h4> {{item.header}}</h4>
-               <i v-if="item.active" @click.stop="activateBody(index)" class="fa-solid fa-xmark cursor fs-2 "></i>
-               <i v-if="!item.active" @click.stop="activateBody(index)" class="fa-solid fa-sort-down cursor fs-2 "></i>
-           </div>
+        <Transition name=toggle>
+            
+               <div v-if="!item.toggle"  @click="reverse(index)"    class="collapsible-header d-flex text-center rounded-pill mt-3">
+               <h4 class="mx-auto"> {{item.header}}</h4>
+              
+               <!-- <i v-if="item.active" @click.stop="activateBody(index)" class="fa-solid fa-xmark cursor fs-2 "></i> -->
+              
+                <i v-if="!item.active  " @click.stop="activateBody(index)" class="fa-solid fa-sort-down cursor fs-2 mx-3"></i> 
+               
+          
+            </div>
          </Transition>
         <Transition name="collapse">
             <div v-html="item.body" v-if="item.active" class="  collapsible-body">
@@ -17,12 +22,25 @@
         </Transition>
     </div> 
     </div> 
-      <div class="menu-bar d-flex p-5">
-           <i class="fa-solid fa-house text-white fs-1"></i>
-          <h1   @mouseover="hover()" @mouseleave="leave()"
-                 class="text-white ">Home</h1>
+    <div>
+         <div class="menu-bar p-4">
+            <img class="" src="https://i.ibb.co/LkR6fq2/001-demo.png" alt="">
+        </div>
+         <div class=" left-menu d-flex p-5">
+       
+        <div class="befor-hover  ">
+        
+           <i @mouseover="hover()" @mouseleave="leave()" class="fa-solid fa-house text-white fs-1 p-2 bg-danger rounded-circle"></i>
+        </div>
+        <div  class="after-hover">
+          <h1 v-if=" customItems[0].home" class="text-white p-2 ">Home</h1>
+        </div>
+           
+        
                 
      </div>
+    </div>
+    
   </div>   
 </template>
 <script>
@@ -55,8 +73,12 @@ export default {
     //  },
    
     data(){
+
         return{
-              collapsibleItems:[]
+              collapsibleItems:[],
+              menu:[
+
+              ]
          }
      },
       computed:{
@@ -65,8 +87,9 @@ export default {
                    return{
                  header:item.header,
                  body:item.body,
-                  active:item.active,
-                  icon:item.icon
+                 active:item.active,
+                 icon:item.icon,
+                 home:item.home,
              }
              }
              );
@@ -78,7 +101,7 @@ export default {
     methods:{
         activateBody(index,event){
             console.log(index);
-            this.collapsibleItems[index].active = !this.collapsibleItems[index].active;
+            this.collapsibleItems[1].active = !this.collapsibleItems[1].active;
             this.collapsibleItems.forEach((item,id)=>{
                 if(id!==index){
                  item.active=false;
@@ -88,26 +111,32 @@ export default {
         },
      
         reverse(index){
-            console.log('reverse');
            
-            this.collapsibleItems[index].toggle= !this.collapsibleItems[index].toggle;
-          
-           setTimeout(()=>{ 
-               this.collapsibleItems[1].toggle= false;
-                this.collapsibleItems[0].toggle= false;
+            if(index==0 && !this.collapsibleItems[1].active){
+               
+                this.collapsibleItems[0].toggle= !this.collapsibleItems[0].toggle;
+               
+             setTimeout(()=>{ 
+                 this.collapsibleItems[1].toggle= false;
+                 this.collapsibleItems[0].toggle= false;
                  this.collapsibleItems= this.collapsibleItems.reverse();
-               console.log('sett')
-          }, 1000);
+                 console.log('sett')
+                }, 1000);
+
+            }
+           
+           
         },
 
         hover(){
-          console.log('hover');
-            this.collapsibleItems[1].active = !this.collapsibleItems[1].active;
+            console.log('hover');
+            this.collapsibleItems[0].home=! this.collapsibleItems[0].home;
+      
            
         },
         leave(){
           console.log('leave');
-            this.collapsibleItems[1].active = !this.collapsibleItems[1].active;
+          this.collapsibleItems[0].home=! this.collapsibleItems[0].home;
         }
 
     }
