@@ -6,8 +6,8 @@
         <Transition name="toggle">
              <div v-if="!item.toggle"  @click="reverse(index)"    class="collapsible-header d-flex justify-content-between  ">
                <h4> {{item.header}}</h4>
-               <i v-if="item.active" @click.stop="activateBody(index,event)" class="fa-solid fa-xmark cursor fs-2 "></i>
-               <i v-if="!item.active" @click.stop="activateBody(index,event)" class="fa-solid fa-sort-down cursor fs-2 "></i>
+               <i v-if="item.active" @click.stop="activateBody(index)" class="fa-solid fa-xmark cursor fs-2 "></i>
+               <i v-if="!item.active" @click.stop="activateBody(index)" class="fa-solid fa-sort-down cursor fs-2 "></i>
            </div>
          </Transition>
         <Transition name="collapse">

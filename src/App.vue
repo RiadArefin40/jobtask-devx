@@ -78,4 +78,35 @@
    }
 
 </script>
+<style scoped>
+          /* code for animation with Vue Transition  */
+ 
+ 
+          .collapse-enter-active{
+            height: 30px;  
+           }
+           .collapse-enter-to{
+             height: 500px;
+           }
+           .collapse-leave-to{
+             height: 30px;   
+           }
+             .cursor{
+             cursor: pointer;
+           }
+           .toggle-enter-from{
+           transition: all 3s linear;
+           }
+           .toggle-enter-to{
+            transition: all 3s linear;
+           }
+         .toggle-leave-active{
+              transition: all 2s cubic-bezier(1, 0.8, 0.8, 1);
+         
+         }
+           .toggle-leave-to{
+              transform: translatey(100px);
+             opacity: 0;
+           }
+</style>
 
