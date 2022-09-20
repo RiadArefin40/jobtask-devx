@@ -1,0 +1,27 @@
+.collapse-wrapper{
+    width: 80%;
+    height: auto;
+    box-shadow: 1px 1px 25px #555 ;
+  }
+
+  .collapsible-header{
+    color: aliceblue;
+    padding: 15px;
+    background-color: rgb(214, 39, 30);
+    border: 2px solid white;    
+  }
+  .collapsible-body{
+    padding: 15px;
+    height: 500px;
+    transition: height 2s linear;
+    background-color: #555;
+    border: 2px solid white;
+  }
+  .menu-bar{
+    background-color: #555;
+    width: 20%;
+    height: 100vh;
+  }
+  .cursor{
+    cursor: pointer;
+  }
